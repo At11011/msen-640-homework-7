@@ -1,0 +1,71 @@
+\input{./src/main.sty}
+
+\begin{document}
+
+\input{./src/titlepage.tex}
+
+\pagebreak
+
+\begin{enumerate}
+  \item Using the regular solution model, determine the phase diagram
+    of an isomorphous alloy that has
+    been determined to have the solution parameters shown below. Use
+    a computer (e.g., Python) to plot
+    the free energy curves for strategic temperatures. The maximum
+    temperature required for plotting
+    your G-X curves should be easy to figure out. Figuring out what
+    other strategic temperatures to use
+    will require either playing around with the plots with respect to
+    temperature (easy but potentially
+    tedious) or using your thermodynamic prowess to directly solve
+    for a useful intermediate temperature
+    (harder and potentially much faster, but not required on this
+    assignment). Then, produce at least
+    eight different free energy plots at strategic temperatures. For
+    this assignment, you can graphically
+    determine the phase boundaries on the eight different plots and
+    fill in the rest by hand to produce the
+    phase diagram (i.e., connect the dots).
+
+    \begin{align*}
+      T_1^{\alpha\to L} &= \SI{1550}{\kelvin} \\
+      T_2^{\alpha\to L} &= \SI{1200}{\kelvin} \\
+      \Delta S_1^{0,\alpha\to L} &= \SI{8}{\joule\per\mole\per\kelvin} \\
+      \Delta S_2^{0,\alpha\to L} &= \SI{11}{\joule\per\mole\per\kelvin} \\
+      \omega_0^\alpha &= \SI{19500}{\joule\per\mole} \\
+      \omega_0^L &= \SI{1500}{\joule\per\mole}
+    \end{align*}
+
+    \pagebreak
+
+  \item Given the following equation for excess free energy of mixing
+    of a solution, determine the listed
+    changes in properties due to mixing 35 moles of A with 65 moles
+    of B at 298 K and atmospheric
+    pressure. I suggest you work symbolically until calculating the
+    final answer of each part:
+
+    \begin{align*}
+      \Delta G_{\text{mix}}^{\text{xs}} &= a(1 - bT)(1 - cP)X_AX_B \\
+      a &= \SI{10500}{\joule\per\mole} \\
+      b &= \SI{3e-4}{\per\kelvin} \\
+      c &= \SI{8e-10}{\per\pascal}
+    \end{align*}
+
+    \begin{enumerate}[(a)]
+      \item  Total Gibbs free energy change of mixing.
+      \item  Partial molar Gibbs free energy change of component A.
+      \item  Partial molar Gibbs free energy change of component B.
+      \item  Total entropy change of mixing.
+      \item  Total enthalpy change of mixing.
+      \item  Is this a regular solution? Concisely justify your answer.
+    \end{enumerate}
+
+\end{enumerate}
+
+\pagebreak
+
+\section*{Supporting code:}
+\inputminted{julia}{./calculations/src/calculations.jl}
+
+\end{document}

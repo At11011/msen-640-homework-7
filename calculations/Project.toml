@@ -1,0 +1,16 @@
+name = "calculations"
+uuid = "09697132-0679-4710-ae8e-2c796d1f191b"
+version = "0.1.0"
+authors = ["Nathaniel Thomas <nathaniel@swbell.net>"]
+
+[deps]
+CairoMakie = "13f3f980-e62b-5c42-98c6-ff1f3baf88f0"
+PhysicalConstants = "5ad8b20f-a522-5ce9-bfc9-ddf1d5bda6ab"
+Revise = "295af30f-e4ad-537b-8983-00126c2a3abe"
+Unitful = "1986cc42-f94f-5a68-af5c-568840ba703d"
+
+[compat]
+CairoMakie = "0.15.6"
+PhysicalConstants = "0.2.4"
+Revise = "3.12.0"
+Unitful = "1.25.0"
