@@ -36,12 +36,92 @@
       \omega_0^L &= \SI{1500}{\joule\per\mole}
     \end{align*}
 
+    \boxedanswer{
+      Use the solid $\alpha$ phase as a reference. The regular
+      solution model gives the following (for the solid phase):
+
+      \begin{equation*}
+        \Delta G_{\text{mix}}^{(i)}(x,T) = \omega^{(i)}x(1-x) +
+        RT[x\ln x + (1 - x)\ln (1-x)]
+      \end{equation*}
+
+      For the liquid phase, apply an offset:
+
+      \begin{align*}
+        \Delta G^L(x,T) &= (1 - X)\Delta G_1^\circ(T) + x\Delta
+        G_2^\circ(T) + \Delta G_{\text{mix}}^{(\alpha)}(x,T) \\
+        &
+        \begin{aligned}
+          \Delta H_f &= \Delta S^\circ T_m \\
+          \Delta G^\circ &=\Delta S^\circ T_m - \Delta S^\circ T \\
+          \Delta G_1^\circ(T) &= \Delta S_1^0(T_{m,1} - T) \\
+          \Delta G_2^\circ(T) &= \Delta S_2^0(T_{m,2} - T) \\
+        \end{aligned} \\
+      \end{align*}
+    }
+
+    \pagebreak
+
+  \item The free energy of mixing of a liquid solution is accurately modeled by:
+
+    \begin{equation*}
+      \Delta G_{\text{mix}}\{L; L\}=8400X_AX_B+RT(X_A\ln X_A+XB\ln X_B)
+    \end{equation*}
+
+    \begin{enumerate}[(a)]
+      \item Compute and plot (i.e., using a computer) the activity of
+        component B ($a_B$) as a function of
+        composition at \SI{600}{\kelvin} in this solution.
+
+        \boxedanswer{
+
+          \begin{align*}
+            \Delta \overline G_B &= \Delta G_{\text{mix}} + (1 - X_B)
+            \frac{d \Delta G_{\text{mix}}}{dX_B} \tag{8.28} \\
+            \Delta \overline G_B &= RT\ln a_B \\
+            a_B &= \exp\left(\frac{\Delta G_{\text{mix}} + (1 - X_B)
+            \frac{d \Delta G_{\text{mix}}}{dX_B}}{RT}\right)
+          \end{align*}
+
+          \centering
+          \includegraphics[width=0.6\textwidth]{./assets/fig_1.png}
+        }
+
+        \pagebreak
+
+      \item Now, plot the same thing, but assume the reference states in
+        the plot are $\{L; \alpha\}$ and pure B has a
+        free energy of fusion of \SI{-1200}{\joule\per\mole} at
+        \SI{600}{\kelvin}.
+
+        \boxedanswer{
+
+          To account for the change in reference, the
+          free energy in the exponential term above must be
+          augmented by adding in the free energy of fusion.
+
+          \begin{align*}
+            \mu_B - \mu_B^{(\alpha)} &= (\mu_B -
+            \mu_B^{\text{(liquid)}}) + \Delta G_{\text{fus}} \\
+            a_B^{(\alpha)} &=
+            a_B^{\text{(liquid)}}\exp\left(\frac{\Delta
+            G_{\text{fus}}}{RT}\right)
+          \end{align*}
+
+          \centering
+          \includegraphics[width=0.6\textwidth]{./assets/fig_2.png}
+
+        }
+
+    \end{enumerate}
+
     \pagebreak
 
   \item Given the following equation for excess free energy of mixing
     of a solution, determine the listed
-    changes in properties due to mixing 35 moles of A with 65 moles
-    of B at 298 K and atmospheric
+    changes in properties due to mixing \SI{35}{\mole} of A with
+    \SI{65}{\mole}
+    of B at \SI{298}{\kelvin} and atmospheric
     pressure. I suggest you work symbolically until calculating the
     final answer of each part:
 
@@ -54,11 +134,35 @@
 
     \begin{enumerate}[(a)]
       \item  Total Gibbs free energy change of mixing.
+
+        \boxedanswer{
+          Put answer here.
+        }
       \item  Partial molar Gibbs free energy change of component A.
+
+        \boxedanswer{
+          Put answer here.
+        }
       \item  Partial molar Gibbs free energy change of component B.
+
+        \boxedanswer{
+          Put answer here.
+        }
       \item  Total entropy change of mixing.
+
+        \boxedanswer{
+          Put answer here.
+        }
       \item  Total enthalpy change of mixing.
+
+        \boxedanswer{
+          Put answer here.
+        }
       \item  Is this a regular solution? Concisely justify your answer.
+
+        \boxedanswer{
+          Put answer here.
+        }
     \end{enumerate}
 
 \end{enumerate}
