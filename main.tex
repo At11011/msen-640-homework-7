@@ -37,6 +37,18 @@
     \end{align*}
 
     \boxedanswer{
+      The following phase diagram was made using the provided
+      thermodynamic data.
+      The details are provided below. Refer to the code appended to
+      the end of this
+      document for implementation details.
+      \centering
+      \includegraphics[width=0.4\textwidth]{./assets/phase_diagram.png}
+    }
+
+    \pagebreak
+
+    \boxedanswer{
       Use the solid $\alpha$ phase as a reference. The regular
       solution model gives the following (for the solid phase):
 
@@ -56,8 +68,66 @@
           \Delta G^\circ &=\Delta S^\circ T_m - \Delta S^\circ T \\
           \Delta G_1^\circ(T) &= \Delta S_1^0(T_{m,1} - T) \\
           \Delta G_2^\circ(T) &= \Delta S_2^0(T_{m,2} - T) \\
-        \end{aligned} \\
+        \end{aligned}
       \end{align*}
+
+      The chemical potential can be used to find tangent lines. A
+      non-linear 2D solver
+      can be used to find points on both lines that have matching slopes;
+
+      \begin{align*}
+        \mu_B^{(i)}(x,T) &=  \frac{\delta G^{(i)}(x,T)}{\delta x},
+        \mu_A^{(i)}(x,T) = G^{(i)}(x,T) - x\mu_B^{(i)}(x,T)
+      \end{align*}
+
+      Take the analytical derivative:
+
+      \begin{align*}
+        \frac{\delta}{\delta x}\left[\omega x(1 - x) + RT(x\ln x +
+        (1-x)\ln(1 - x))\right] = \omega(1 - 2x) + RT\ln\frac{x}{1 - x} \\
+        \mu_A^\alpha(x_\alpha,T) = \mu_A^L(x_L,T), \qquad
+        \mu_B^\alpha(x_\alpha, T) = \mu_B^L(x_L, T)
+      \end{align*}
+
+      We can pick 8 points with the following justifications:
+
+      \begin{enumerate}
+        \item \SI{800}{K}: Well below the melting point of both
+          phases, there should
+          only be $\alpha$ present.
+        \item \SI{1000}{K}: Closer to the melting point of component 2, a
+          liquid transition may be observed.
+        \item \SI{1200}{K}: The melting point of component 2, a
+          liquid transition
+          should be observed
+          at this point.
+        \item \SI{1300}{K}: The solid range should be observed to decrease
+          as the temperature is increased over component 2's melting point.
+        \item \SI{1450}{K}: Between the melting points of component 1 and 2.
+          There should be a fairly narrow solid range.
+        \item \SI{1500}{K}: Close to the melting point of component 1. A very
+          narrow solid range should be observed.
+        \item \SI{1550}{K}: Melting point of component 1. There
+          should be no solid phase, except  at $X_2 = 0$.
+        \item \SI{1650}{K}: Above the melting point of component 1. There
+          should be no solid phase and the liquid phase should be
+          stable everywhere.
+      \end{enumerate}
+
+    }
+
+    \pagebreak
+
+    \boxedanswer{
+      \centering
+      \includegraphics[width=0.4\textwidth]{./assets/G_vs_x_T_800.png}
+      \includegraphics[width=0.4\textwidth]{./assets/G_vs_x_T_1000.png}
+      \includegraphics[width=0.4\textwidth]{./assets/G_vs_x_T_1200.png}
+      \includegraphics[width=0.4\textwidth]{./assets/G_vs_x_T_1300.png}
+      \includegraphics[width=0.4\textwidth]{./assets/G_vs_x_T_1450.png}
+      \includegraphics[width=0.4\textwidth]{./assets/G_vs_x_T_1500.png}
+      \includegraphics[width=0.4\textwidth]{./assets/G_vs_x_T_1550.png}
+      \includegraphics[width=0.4\textwidth]{./assets/G_vs_x_T_1650.png}
     }
 
     \pagebreak
@@ -136,7 +206,35 @@
       \item  Total Gibbs free energy change of mixing.
 
         \boxedanswer{
-          Put answer here.
+          \begin{align*}
+            \Delta G_{\text{mix}}^{\text{total}} &= n_\text{tot}\left[\Delta
+              G_{\text{mix}}^{\text{ID}} + \Delta
+            G_{\text{mix}}^{\text{EX}}\right] \\
+            &
+            \begin{aligned}
+              G_{\text{mix}}^{\text{ID}} &= RT(X_A\ln X_A + X_B\ln X_B)  \\
+              G_{\text{mix}}^{\text{EX}} &= a(1 - bT)(1 - cP)X_AX_B \\
+              X_B &= 1 - X_A \\
+            \end{aligned} \\
+            \Delta G_{\text{mix}}^{\text{total}} &= n_\text{tot}[RT(X_A\ln X_A +
+            (1 - X_A)\ln (1 - X_A)) + a(1 - bT)(1 - cP)X_A(1 - X_A)] \\
+            &
+            \begin{aligned}
+              R &= \SI{8.314}{\joule\per\mole\kelvin} \\
+              T &= \SI{298}{\kelvin} \\
+              X_A &= \frac{35}{65 + 35} = 0.35 \\
+              1 - X_A &= 1 - 0.35  = 0.65 \\
+              n_\text{tot} &= \SI{35}{\mole} + \SI{65}{\mole}  =
+              \SI{100}{\mole}\\
+            \end{aligned} \\
+            \Delta G_{\text{mix}}^{\text{total}} &=
+            \SI{100}{\mole}[(\SI{8.314}{\joule\per\mole\kelvin})(\SI{298}{\kelvin})
+              ((0.35)\ln (0.35) + (0.65)\ln (0.65)) + \\
+              & (\SI{10500}{\joule\per\mole})(1 - (\SI{3e-4}{\per\kelvin})
+              (\SI{298}{\kelvin}))(1 -
+            (\SI{8e-10}{\per\pascal})(\SI{101325}{\pascal}))(0.35)(0.65)] \\
+            \Aboxed{\Delta G_{\text{mix}}^{\text{total}} &= \SI{57092}{\joule}}
+          \end{align*}
         }
       \item  Partial molar Gibbs free energy change of component A.
 
