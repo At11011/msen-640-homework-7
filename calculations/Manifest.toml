@@ -1742,7 +1742,7 @@ uuid = "3161d3a3-bdf6-5164-811a-617609db77b4"
 version = "1.5.7+1"
 
 [[deps.calculations]]
-deps = ["CairoMakie", "ForwardDiff", "PhysicalConstants", "Revise", "Unitful"]
+deps = ["CairoMakie", "ForwardDiff", "NLsolve", "PhysicalConstants", "Revise", "Unitful"]
 path = "."
 uuid = "09697132-0679-4710-ae8e-2c796d1f191b"
 version = "0.1.0"

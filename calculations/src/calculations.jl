@@ -1,10 +1,11 @@
 module calculations
 
-using CairoMakie, ForwardDiff, NLsolve
+using CairoMakie, ForwardDiff, NLsolve, PhysicalConstants.CODATA2022, Unitful
+
+R = ustrip(AvogadroConstant * BoltzmannConstant)
 
 function problem_1()
     # constants and parameters
-    R = 8.314462618
     Tm1 = 1550.0   # K, component 1
     Tm2 = 1200.0   # K, component 2
     dS1 = 8.0      # J/mol/K
@@ -133,7 +134,6 @@ function problem_1()
 end
 
 function problem_2_a()
-    R = 8.314
     T = 600
     G(x) = @. 8400 * x * (1 - x) + R * T * (x * log(x) + (1 - x) * log(1 - x))
     dG(x) = @. ForwardDiff.derivative(G, x)
@@ -155,7 +155,6 @@ function problem_2_a()
 end
 
 function problem_2_b()
-    R = 8.314
     T = 600
     G(x) = @. 8400 * x * (1 - x) + R * T * (x * log(x) + (1 - x) * log(1 - x))
     dG(x) = @. ForwardDiff.derivative(G, x)
@@ -182,20 +181,46 @@ function problem_3()
     a = 10500
     b = 3e-4
     c = 8e-10
-    R = 8.314
     T = 298
     n_a = 35
     n_b = 65
+    n = n_a + n_b
     X_A = n_a / (n_a + n_b)
     X_B = n_b / (n_a + n_b)
     P = 101325
 
     GE = a * (1 - b * T) * (1 - c * P) * X_A * X_B
     GID = R * T * (X_A * log(X_A) + X_B * log(X_B))
-    println((GE + GID) * (n_a + n_b))
+
+    # Part a
+    Gmix = (GE + GID) * n
+    println("Gmix: $(Gmix) J")
+
+    # Part b
+    dGEA = a * (1 - b * T) * (1 - c * P) * (1 - 2X_A)
+    μ_EA = GE + (1 - X_A) * dGEA
+    μ_A = R * T * log(X_A) + μ_EA
+    println("μ_A: $μ_A J/mol")
+
+    # Part c
+    dGEB = a * (1 - b * T) * (1 - c * P) * (1 - 2X_B)
+    μ_EB = GE + (1 - X_B) * dGEB
+    μ_B = R * T * log(X_B) + μ_EB
+    println("μ_B: $μ_B J/mol")
+
+    # Part d
+    ΔS_total = -n * (R * (X_A * log(X_A) + X_B * log(X_B)) - a * b * (1 - c * P) * X_A * X_B)
+    println("ΔS_total: $ΔS_total J/K")
+
+    # Part e
+    ΔH_total = Gmix + ΔS_total * T
+    println("ΔH_total: $ΔH_total J")
 end
 
 function main()
+    problem_1()
+    problem_2_a()
+    problem_2_b()
     problem_3()
 end
 

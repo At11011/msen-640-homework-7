@@ -239,27 +239,88 @@
       \item  Partial molar Gibbs free energy change of component A.
 
         \boxedanswer{
-          Put answer here.
+          \begin{align*}
+            \overline G_A &= \mu_A = RT\ln X_A + \mu_A^{EX} \\
+            &
+            \begin{aligned}
+              \mu_A^{EX} &= G^{EX} + (1 - X_A)\frac{dG^{EX}}{dX_A} \\
+              &
+              \begin{aligned}
+                G^{\text{EX}} &= a(1 - bT)(1 - cP)X_AX_B \\
+                \frac{dG^{EX}}{dX_A} &=
+                \frac{d}{dX_A}\left[a(1 - bT)(1
+                - cP)X_A(1 - X_A)\right] \\
+                \frac{dG^{EX}}{dX_A} &= a(1 - bT)(1
+                - cP)(1 - 2X_A) \\
+              \end{aligned} \\
+            \end{aligned} \\
+            \overline G_A &= RT\ln X_A - a(1 - bT)(1 - cP)(1 -
+            X_A)\left[1 + X_A\right] \\
+            \Aboxed{\overline G_A &= \SI{1438}{\joule\per\mole}}
+          \end{align*}
         }
+
+        \pagebreak
+
       \item  Partial molar Gibbs free energy change of component B.
 
         \boxedanswer{
-          Put answer here.
+          Similar to the previous part:
+
+          \begin{align*}
+            \overline G_B &= \mu_B = RT\ln X_B + \mu_B^{EX} \\
+            &
+            \begin{aligned}
+              \mu_A^{EX} &= G^{EX} + (1 - X_A)\frac{dG^{EX}}{dX_A} \\
+              &
+              \begin{aligned}
+                G^{\text{EX}} &= a(1 - bT)(1 - cP)X_AX_B \\
+                \frac{dG^{EX}}{dX_B} &=
+                \frac{d}{dX_B}\left[a(1 - bT)(1
+                - cP)X_B(1 - X_B)\right] \\
+                \frac{dG^{EX}}{dX_B} &= a(1 - bT)(1
+                - cP)(1 - 2X_B) \\
+              \end{aligned} \\
+            \end{aligned} \\
+            \overline G_B &= RT\ln X_B - a(1 - bT)(1 - cP)(1 -
+            X_B)\left[1 + X_B\right] \\
+            \Aboxed{\overline G_B &= \SI{103.8}{\joule\per\mole}}
+          \end{align*}
+
         }
       \item  Total entropy change of mixing.
 
         \boxedanswer{
-          Put answer here.
+          \begin{align*}
+            \Delta S_{\text{total}} &= -\left( \frac{\delta \Delta
+            G_{\text{total}}}{\delta T}\right)_P \\
+            &
+            \begin{aligned}
+              \frac{\delta \Delta G_{\text{total}}}{\delta T} &=
+              RT(X_A\ln X_A + X_B \ln X_B) + a(1 - bT)(1 - cP)X_AX_B \\
+            \end{aligned} \\
+            \Delta S_{\text{total}} &= -n[R(X_A\ln X_A + X_B \ln X_B)
+            - ab(1 - cP)X_AX_B] \\
+            \Aboxed{\Delta S_{\text{total}} &= \SI{609.9}{\joule\per\kelvin}}
+          \end{align*}
         }
       \item  Total enthalpy change of mixing.
 
         \boxedanswer{
-          Put answer here.
+          \begin{align*}
+            \Delta H_{\text{total}} &= \Delta G_{\text{total}} +
+            T\Delta S_{\text{total}} \\
+            \Aboxed{\Delta H_{\text{total}} &= \SI{238855}{\joule}}
+          \end{align*}
         }
       \item  Is this a regular solution? Concisely justify your answer.
 
         \boxedanswer{
-          Put answer here.
+          A regular solution utilizes a temperature-independent interaction
+          parameter with no excess entropy. In this case, the factor
+          $a(1 - bT)(1 - cP)$
+          in the excess Gibbs free energy is temperature dependent. This is
+          not a regular solution.
         }
     \end{enumerate}
 
